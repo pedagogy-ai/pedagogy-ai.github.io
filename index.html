@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+  <title>Pedagogy Demo</title>
+</head>
+
 <body>
+  <script src="answer_check_v1.js"></script>
 
-<h2>My First JavaScript</h2>
+  <div>
+    <h3>A demonstration of AI education</h3>
 
-<button type="button"
-onclick="document.getElementById('demo').innerHTML = Date()">
-Click me to display Date and Time.</button>
+    Input:<br>
 
-<p id="demo"></p>
+    <textarea id="answer_input"></textarea>
+
+    <p>Click the button to check answer</p>
+
+    <button type="button" onclick="check_ans()">Try it</button>
+
+    <p id="output"></p>
+      
+  </div>
 
 </body>
-</html> 
-
+</html>
