@@ -121,7 +121,7 @@ function milestone_1(input, ans) {
     var result = [];
     var all_correct = true;
 
-    if (input.length) {
+    if (input.length == 0) {
         all_correct = false;
     }
 
