@@ -191,7 +191,7 @@ Array.prototype.trim_equals = function() {
 
 Array.prototype.remove_empty_element = function() {
     for (var i = 0; i < this.length; i++){
-        if(this[i] == ""){
+        while(this[i] == ""){
             this.splice(i,1);
         }
     }
