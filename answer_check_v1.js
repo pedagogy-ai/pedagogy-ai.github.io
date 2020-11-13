@@ -141,6 +141,62 @@ function milestone_1(input, ans) {
 
 
 /////////////////////////////////////////////////
+// TF code
+
+// conversion dictionary
+symbol = {
+    '+':1,
+    '-':2,
+    '*':3,
+    '/':4
+};
+
+symbol_s = {
+    1:'+',
+    2:'-',
+    3:'*',
+    4:'/'
+};
+
+// Data pre-processing
+
+function tokenize(inp) {
+    var out = [];
+
+    for (var i = 0; i < inp.length; i++) {
+        if (inp[i] == ''){
+            out[i] = 0
+        }
+        else if (isNAN(inp[i])) {
+            out[i] = parseFloat(inp[i])
+        }
+        else {
+            out[i] = symbol[inp[i]]
+        }
+    }
+
+    return out;
+}
+
+const LENGTH = 9
+function standardize(inp) {
+    
+
+}
+
+
+
+// Tensorflow Functions
+import * as tf from '@tensorflow/tfjs';
+
+const model = await tf.loadLayersModel('https://pedagogy-ai.github.io/tfjs_model/model_1.json');
+
+model_input = 1;
+
+const prediction = model.predict(model_input);
+
+
+/////////////////////////////////////////////////
 // Math Functions
 
 function string_calculate(obj) {
