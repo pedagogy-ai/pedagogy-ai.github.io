@@ -42,7 +42,10 @@ function html_repeat_input(inp_str) {
     var result_1 = milestone_2(input, ANS);
 
     var output_1 = display_each_line(input, "= ");
-    var output_2 = display_each_line(bool_to_output_sting(result_1[0]));
+    var output_2 = display_each_line(bool_to_output_sting(result_1[0],
+        "Step correct",
+        "Step wrong"
+        ));
     var output_3 = "The final answer is " + bool_to_output_sting(check_final_answer(input, ANS));
     var output_4 = bool_to_output_sting(result_1[1], 
         "All steps are correct",
@@ -126,13 +129,17 @@ function milestone_2(input, ans) {
     if (input.length == 0) {
         all_correct = false;
     }
-
-    var tf_inp = input.slice();
-    tf_inp.unshift(QUESTION)
-
-    tf_predict(tf_inp)
-
+    else {
+        var tf_inp = input.slice();
+        tf_inp.unshift(QUESTION)
     
+        model_out = tf_predict(tf_inp);
+        result = model_out[0];
+        prob = model_out[1];
+        
+        all_correct = result.every(v => v === true);
+    }
+
     return [result, all_correct];
 }
 

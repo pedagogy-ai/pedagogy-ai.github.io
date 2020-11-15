@@ -4,8 +4,21 @@
 /////////////////////////////////////////////////
 // Import TF and model
 
-//import * as tf from '@tensorflow/tfjs';
-const model = tf.loadLayersModel('https://pedagogy-ai.github.io/model_js/model.json');
+async function load_tf_model() {
+    const m = await tf.loadLayersModel('https://pedagogy-ai.github.io/model_js/model.json');
+    console.log("tf_loading");
+
+    return m;
+}
+
+var model;
+
+function tf_loaded(res) {
+    console.log("tf_loaded");
+    model = res;
+}
+
+load_tf_model().then(tf_loaded);
 
 
 /////////////////////////////////////////////////
@@ -112,17 +125,32 @@ function standardize(inp) {
 // Tensorflow Functions
 
 function tf_predict(inp) {
-    var sol = Standardize(inp);
-
+    var sol = standardize(inp);
     var result = [];
+    var prob = [];
 
     for (var i = 1; i < sol.length; i++) {
         var input_sol = [tokenize(sol[i-1]), tokenize(sol[i])]
-        const prediction = model.predict(input_sol);
+        
+        var data = tf.tensor([input_sol]);
+        console.log(data);
 
-        console.log(input_sol);
-        console.log(prediction);
+        const prediction = model.predict(data);
+        const pred = Array.from(prediction.dataSync());
+
+        console.log(pred);
+        console.log("-------");
+
+        if (pred[0] > 0.5) {
+            result.push(false);
+            prob.push(pred[0]);
+        }
+        else {
+            result.push(true);
+            prob.push(pred[1]);
+        }
     }
 
+    return ([result, prob]);
 }
 
