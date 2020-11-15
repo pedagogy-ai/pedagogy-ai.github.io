@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Pedagogy Demo</title>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+  <script src="answer_check_v2_2.js"></script>
+  <script src="tf_model_2.js"></script>
+
+  <div>
+    <h3>A demonstration of AI education</h3>
+
+    <h4>Question: 2x+3=7</h4>
+
+  </div>
+
+  <div>
+    Answer:<br>
+
+    <textarea id="answer_input" rows="8" cols="100"></textarea>
+
+    <p>Click the button to check answer</p>
+
+    <button type="button" onclick="check_ans()">Try it</button>
+  
+  </div>
+
+  <div>
+    <h4>Input:</h4>
+    <p id="output_inp"></p>
+
+  </div>
+  
+  <div>
+    <h4>Output:</h4>
+    <p id="output_correct"></p>
+
+    <h5 id="final_result"></h5>
+    <h5 id="step_result"></h5>
+      
+  </div>
+
+</body>
+</html>
