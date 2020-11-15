@@ -40,9 +40,9 @@ function html_repeat_input(inp_str) {
         input.pop();
     }
 
-    var result_1 = milestone_2_2(input, ANS);
+    var result_1 = milestone_2_2(input);
 
-    var output_1 = display_each_line(input, "= ");
+    var output_1 = display_each_line(input, "");
     var output_2 = display_each_line(bool_to_output_sting(result_1[0],
         "Step correct",
         "Step wrong"
@@ -123,7 +123,7 @@ function check_final_answer(input, ANS) {
 
 
 
-function milestone_2_2(input, ans) {
+function milestone_2_2(input) {
     var result = [];
     var all_correct = true;
 

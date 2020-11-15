@@ -5,7 +5,7 @@
 // Import TF and model
 
 async function load_tf_model() {
-    const m = await tf.loadLayersModel('https://pedagogy-ai.github.io/model_js/model.json');
+    const m = await tf.loadLayersModel('https://pedagogy-ai.github.io/model2js/model.json');
     console.log("tf_loading");
 
     return m;
@@ -50,8 +50,8 @@ const LENGTH = 6;
 function tokenize(inp, ans) {
     var sol = [];
 
-    for (var i = 0; i < inp.length; i++) {
-        var step = inp[i];
+    for (var k = 0; k < inp.length; k++) {
+        var step = inp[k];
         var s = [];
 
         i = 0;
@@ -73,15 +73,16 @@ function tokenize(inp, ans) {
                     j++;
                 }
                 var num = parseFloat(step.substring(i, j-1));
+                s.push(num);
                 i = j-1;
             }
         }
 
-        for (var j = step.length; j < LENGTH; j++){
-            step.push('');
+        for (var j = s.length; j < LENGTH; j++){
+            s.push(0);
         }
 
-        sol.push(step);
+        sol.push(s);
     }
 
     return sol;
@@ -94,12 +95,12 @@ function tf_predict(inp, ans) {
     var result = [];
     var prob = [];
 
-    for (var i = 1; i < sol.length; i++) {
-        var input_sol = [tokenize(inp[i-1], ans), tokenize(inp[i], ans)]
+    for (var i = 1; i < inp.length; i++) {
+        var input_sol = tokenize([inp[i-1], inp[i]], ans)
+        console.log(input_sol);
         
         var data = tf.tensor([input_sol]);
-        console.log(data);
-
+        
         const prediction = model.predict(data);
         const pred = Array.from(prediction.dataSync());
 
