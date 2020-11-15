@@ -107,22 +107,18 @@ function bool_to_output_sting(inp, true_string = "correct", false_string = "wron
 
 function check_final_answer(input, ANS) {
     try {
-        var inp_ans = parseFloat(input[input.length-1])
+        if (input == ANS){
+            return true;
+        }
+        else {
+            return false;
+        }
     } 
     catch (e) {
         return false;
     }
-    
-    if (inp_ans == ANS){
-        return true;
-    }
-    else {
-        return false;
-    }
 }
-
-
-
+    
 function milestone_2_2(input) {
     var result = [];
     var all_correct = true;
