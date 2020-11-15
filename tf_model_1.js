@@ -5,7 +5,7 @@
 // Import TF and model
 
 import * as tf from '@tensorflow/tfjs';
-const model = await tf.loadLayersModel('https://pedagogy-ai.github.io/model/model_1.json');
+const model = tf.loadLayersModel('https://pedagogy-ai.github.io/model/model_1.json');
 
 
 /////////////////////////////////////////////////
