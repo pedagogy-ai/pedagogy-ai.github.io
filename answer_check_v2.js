@@ -1,4 +1,6 @@
 
+const QUESTION = "1+2*3-8/4"
+const ANS = 5
 
 /////////////////////////////////////////////////
 // HTML Functions
@@ -36,8 +38,6 @@ function html_repeat_input(inp_str) {
         // remove leading empty element
         input.pop();
     }
-
-    const ANS = 5
 
     var result_1 = milestone_2(input, ANS);
 
@@ -127,7 +127,10 @@ function milestone_2(input, ans) {
         all_correct = false;
     }
 
+    var tf_inp = input.slice();
+    tf_inp.unshift(QUESTION)
     
+    console.log(tf_inp);
 
     
     return [result, all_correct];

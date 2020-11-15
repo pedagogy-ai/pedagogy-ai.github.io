@@ -2,10 +2,10 @@
 
 
 /////////////////////////////////////////////////
-//import TF and model
+import TF and model
 
-//import * as tf from '@tensorflow/tfjs';
-//const model = await tf.loadLayersModel('https://pedagogy-ai.github.io/model/model_1.json');
+import * as tf from '@tensorflow/tfjs';
+const model = await tf.loadLayersModel('https://pedagogy-ai.github.io/model/model_1.json');
 
 
 /////////////////////////////////////////////////
@@ -31,7 +31,7 @@ symbol_s = {
 
 // Data pre-processing
 
-function tokenize(inp) {
+export function tokenize(inp) {
     var out = [];
 
     for (var i = 0; i < inp.length; i++) {
@@ -50,7 +50,7 @@ function tokenize(inp) {
 }
 
 const LENGTH = 9
-function standardize(inp) {
+export function standardize(inp) {
     var sol = [];
 
     for (var i = 0; i < inp.length; i++) {
@@ -108,8 +108,13 @@ function standardize(inp) {
 }
 
 
-
+////////////////////////////////////////////////
 // Tensorflow Functions
+
+export function tf_predict(inp) {
+
+    
+}
 
 //model_input = 1;
 //const prediction = model.predict(model_input);
