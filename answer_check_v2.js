@@ -129,8 +129,8 @@ function milestone_2(input, ans) {
 
     var tf_inp = input.slice();
     tf_inp.unshift(QUESTION)
-    
-    console.log(tf_inp);
+
+    tf_predict(tf_inp)
 
     
     return [result, all_correct];

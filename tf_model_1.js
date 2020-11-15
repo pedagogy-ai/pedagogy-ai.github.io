@@ -2,7 +2,7 @@
 
 
 /////////////////////////////////////////////////
-import TF and model
+// Import TF and model
 
 import * as tf from '@tensorflow/tfjs';
 const model = await tf.loadLayersModel('https://pedagogy-ai.github.io/model/model_1.json');
@@ -104,7 +104,7 @@ export function standardize(inp) {
         sol.push(step);
     }
 
-    return (sol)
+    return (sol);
 }
 
 
@@ -112,13 +112,17 @@ export function standardize(inp) {
 // Tensorflow Functions
 
 export function tf_predict(inp) {
+    var sol = Standardize(inp);
 
-    
+    var result = [];
+
+    for (var i = 1; i < sol.length; i++) {
+        var input_sol = [tokenize(sol[i-1]), tokenize(sol[i])]
+        const prediction = model.predict(input_sol);
+
+        console.log(input_sol);
+        console.log(prediction);
+    }
+
 }
-
-//model_input = 1;
-//const prediction = model.predict(model_input);
-
-
-
 
