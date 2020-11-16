@@ -77,8 +77,8 @@ function standardize(inp) {
 
 
         while (end < len) {
-            //find next index of next sign
 
+            //find next index of next sign
             while (!(line[end] in symbol)){
                 end = end + 1;
                 if (end >= len){
@@ -95,9 +95,9 @@ function standardize(inp) {
             //append spaces to fit in position
             sym = line[end];
             if (sol.length > 0){
-                e = step.length + 1;
+                e = step.length;
                 while (sym != sol[0][e]) {
-                    step.push('')
+                    step.push('');
                     e++;
                 }
             }
@@ -131,10 +131,10 @@ function tf_predict(inp) {
 
     for (var i = 1; i < sol.length; i++) {
         var input_sol = [tokenize(sol[i-1]), tokenize(sol[i])]
-        
-        var data = tf.tensor([input_sol]);
-        console.log(data);
+        console.log(input_sol);
 
+        var data = tf.tensor([input_sol]);
+        
         const prediction = model.predict(data);
         const pred = Array.from(prediction.dataSync());
 
