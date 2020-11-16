@@ -122,7 +122,9 @@ function num_to_string(inp, string) {
 
 function check_final_answer(input, ANS) {
     try {
-        if (input == ANS){
+        var inp_ans = input[input.length-1];
+
+        if (inp_ans == ANS){
             return true;
         }
         else {
