@@ -5,7 +5,7 @@
 // Import TF and model
 
 async function load_tf_model() {
-    const m = await tf.loadLayersModel('https://pedagogy-ai.github.io/model2js/model.json');
+    const m = await tf.loadLayersModel('https://pedagogy-ai.github.io/model2js_new/model.json');
     console.log("tf_loading");
 
     return m;
