@@ -43,9 +43,10 @@ function html_repeat_input(inp_str) {
     var result_1 = milestone_2_2(input);
 
     var output_1 = display_each_line(input, "");
-    var output_2 = display_each_line(bool_to_output_sting(result_1[0],
+    var output_2 = display_each_line(num_to_string(result_1[0],
+        ["Step wrong",
         "Step correct",
-        "Step wrong"
+        "Correct, step skipped"]
         ));
     var output_3 = "The final answer is " + bool_to_output_sting(check_final_answer(input, ANS));
     var output_4 = bool_to_output_sting(result_1[1], 
@@ -101,6 +102,20 @@ function bool_to_output_sting(inp, true_string = "correct", false_string = "wron
     }
 }
 
+function num_to_string(inp, string) {
+    var output = [];
+
+    for (var i = 0; i < inp.length; i++) {
+        if (inp[i]) {
+            output[i] = string[inp[i]];
+        }
+        else {
+            output[i] = string[inp[i]];
+        }
+    }
+
+    return output
+}
 
 /////////////////////////////////////////////////
 // Milestone functions
@@ -134,7 +149,7 @@ function milestone_2_2(input) {
         result = model_out[0];
         prob = model_out[1];
         
-        all_correct = result.every(v => v === true);
+        all_correct = result.every(v => v == 1);
     }
 
     return [result, all_correct];

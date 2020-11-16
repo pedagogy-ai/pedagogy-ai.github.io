@@ -107,13 +107,17 @@ function tf_predict(inp, ans) {
         console.log(pred);
         console.log("-------");
 
-        if (pred[0] > 0.5) {
-            result.push(false);
+        if (pred[0] > pred[1] && pred[0] > pred[2]) {
+            result.push(0);
             prob.push(pred[0]);
         }
-        else {
-            result.push(true);
+        else if (pred[1] > pred[2]){
+            result.push(1);
             prob.push(pred[1]);
+        }
+        else {
+            result.push(2);
+            prob.push(pred[2]);
         }
     }
 
